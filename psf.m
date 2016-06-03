@@ -1,6 +1,11 @@
 %% Synthese du reseau d'antennes 
+<<<<<<< Updated upstream
 N = 10; %Nombre d'antennes entre 0 et 100km  
 Nout = 0; %Nombre d'antennes au dela de 100km
+=======
+N = 200; %Nombre d'antennes entre 0 et 100km  
+Nout = 10; %Nombre d'antennes au dela de 100km
+>>>>>>> Stashed changes
 ant1 = -50*(1+1i)+100*rand(N-Nout,1)+100*1i*rand(N-Nout,1); 
 ant2 = -500*(1+1i)+1000*rand(Nout,1)+1000*1i*rand(Nout,1); 
 ant = [ant1; ant2];
