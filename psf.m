@@ -1,6 +1,6 @@
 %% Synthese du reseau d'antennes 
 N = 200; %Nombre d'antennes entre 0 et 100km  
-Nout = 10; %Nombre d'antennes au dela de 100km
+Nout = 20; %Nombre d'antennes au dela de 100km
 ant1 = -50*(1+1i)+100*rand(N-Nout,1)+100*1i*rand(N-Nout,1); 
 ant2 = -500*(1+1i)+1000*rand(Nout,1)+1000*1i*rand(Nout,1); 
 ant = [ant1; ant2];
@@ -24,11 +24,14 @@ for j = 1: Np
 end
 %% Calcul de la psf 
 z = zeros(N,3); 
+c = 3*10e+08; %Vitesse de la lumière
+f = 10*10e+07; %Fréquence d'émission
 for i = 1: N 
     z(i, 1) = real(ant(i)); 
     z(i, 2) = imag(ant(i));
     z(i, 3) = 0;
 end 
+z = (2*pi*f/c)*z; 
 B = zeros(256); 
 
 for k = 1 : Np 
