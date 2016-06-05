@@ -1,16 +1,16 @@
 %Prendre PSF pair
-psf=H;%PSF mehdi
+psf=h;%PSF mehdi
 dim=length(psf);
 % zero padding psf
 if(dim~=256)
     k=dim/2;
     psf_0=zeros(256);   
-    psf_0(128-k+1,128+k)=psf;
+    psf_0(128-k+1,128+k+1)=psf;
 else
     psf_0=psf;
 end
     
-zd=fft2(psf_0.')./(fft2(psf_0.'*psf_0)+ones(256)/1000).*fft2(y_b);
+zd=fft2(psf_0.')./(fft2(fliplr(flipud(psf_0))*psf_0)+ones(256)/1000).*fft2(y_b);
 xd=ifft2(zd);
 %xd=real(xd);
 %xd=fftshift(xd);
